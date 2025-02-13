@@ -1,0 +1,20 @@
+{
+  "name": "tsup-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Some useful tools to improve developer experience with tsup",
+  "license": "MIT",
+  "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
+  "scripts": {
+    "format": "prettier .",
+    "postinstall": "ignore-sync .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "ignore-sync": "^8.0.0",
+    "prettier": "^3.5.0",
+    "prettier-plugin-packagejson": "^2.5.8",
+    "turbo": "^2.4.2"
+  },
+  "packageManager": "pnpm@9.15.4"
+}
