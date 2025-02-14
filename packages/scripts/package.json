@@ -16,6 +16,7 @@
     "replace-in-file": "^8.3.0"
   },
   "devDependencies": {
+    "@manypkg/tools": "^1.1.2",
     "@repo/tsconfig": "workspace:*",
     "@types/node": "^22"
   }

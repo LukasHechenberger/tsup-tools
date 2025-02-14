@@ -1,8 +1,8 @@
-import { getPackages, type Package } from '@manypkg/get-packages';
+import { getPackages, type Test } from '@manypkg/get-packages';
 import { replaceInFile } from 'replace-in-file';
 import { join } from 'path';
 
-const { packages, rootDir } = await getPackages(process.cwd());
+const { packages, rootDir, rootPackage } = await getPackages(process.cwd());
 
 const sortedPackages = packages.sort((a, b) => {
   // Private packages last
@@ -11,7 +11,7 @@ const sortedPackages = packages.sort((a, b) => {
 
   // Otherwise sort by name
   return a.packageJson.name.localeCompare(b.packageJson.name);
-}) as (Package & { packageJson: { description?: string } })[];
+});
 
 class Marker {
   private name: string;
@@ -41,7 +41,7 @@ class Marker {
   static footer = new Marker('footer');
 }
 
-for (const pkg of sortedPackages) {
+for (const pkg of [rootPackage!, ...sortedPackages]) {
   const readmePath = join(pkg.dir, 'README.md');
   // Adjust headers in package readmes
   let heading = `# ${pkg.packageJson.name}`;
