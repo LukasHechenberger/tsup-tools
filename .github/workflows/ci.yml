@@ -19,3 +19,9 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm turbo run build
+      - name: Check for uncommitted changes
+        run: |
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "There are uncommitted changes after the build."
+            exit 1
+          fi
