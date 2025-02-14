@@ -12,8 +12,5 @@
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "exports": {
     ".": "./default.json"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

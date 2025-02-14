@@ -1,5 +1,6 @@
-import { getPackages, type Package } from '@manypkg/get-packages';
+import { getPackages } from '@manypkg/get-packages';
 import { join, relative } from 'path';
+import { getOutputFiles } from './lib/package-output';
 
 const dependencyTypesToHandle = [
   'dependencies',
@@ -7,23 +8,6 @@ const dependencyTypesToHandle = [
   'peerDependencies',
   'optionalDependencies',
 ] as const;
-
-type ExtendedPackageJson = Package['packageJson'] & {
-  main?: string;
-};
-
-function isTruthy<T>(value: T): value is Exclude<T, false | null | undefined> {
-  return Boolean(value);
-}
-
-function getOutputFiles(packageJson: ExtendedPackageJson) {
-  const outputFiles = [
-    packageJson.main,
-    // TODO: Add exports etc.
-  ].filter(isTruthy);
-
-  return outputFiles;
-}
 
 export async function getDependencyOutputFiles({}: {} = {}): Promise<string[]> {
   const currentDir = process.cwd();
@@ -46,7 +30,7 @@ export async function getDependencyOutputFiles({}: {} = {}): Promise<string[]> {
   );
 
   const depdendencyOutputFiles = workspaceDependencies.flatMap((pkg) =>
-    getOutputFiles(pkg.packageJson as ExtendedPackageJson)
+    getOutputFiles(pkg.packageJson)
       // Use relative paths to shorten tsup CLI output
       .map((p) => relative(currentDir, join(pkg.dir, p))),
   );
@@ -55,5 +39,5 @@ export async function getDependencyOutputFiles({}: {} = {}): Promise<string[]> {
 }
 
 export async function getFilesToWatch() {
-  return ['.', ...(await getDependencyOutputFiles())];
+  return ['.', ...(await getDependencyOutputFiles())]; // FIXME: Exclude own output files
 }

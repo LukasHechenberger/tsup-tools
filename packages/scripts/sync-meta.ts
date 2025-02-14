@@ -53,8 +53,11 @@ for (const pkg of [rootPackage!, ...sortedPackages]) {
     // Update publishConfig
     pkg.packageJson.publishConfig = pkg.packageJson.private ? undefined : { access: 'public' };
 
-    // Add check-pkg scripts
     if (!pkg.packageJson.private) {
+      // ...and files
+      pkg.packageJson.files = ['out'];
+
+      // Add check-pkg scripts
       pkg.packageJson.scripts ??= {};
       pkg.packageJson.scripts['check-pkg'] = 'pnpm pkg-ok';
     }
