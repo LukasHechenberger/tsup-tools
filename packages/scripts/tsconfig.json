@@ -1,0 +1,9 @@
+{
+  "extends": ["@repo/tsconfig"],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "module": "preserve"
+  }
+}

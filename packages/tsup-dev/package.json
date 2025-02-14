@@ -1,0 +1,40 @@
+{
+  "name": "@lhechenberger/tsup-dev",
+  "version": "0.0.0",
+  "description": "`tsup --watch`, but uses your tsup.config to determine which files to watch",
+  "keywords": [
+    "tsup",
+    "watch",
+    "dev",
+    "monorepo",
+    "turbobuild"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHechenberger/tsup-tools.git",
+    "directory": "packages/tsup-dev"
+  },
+  "license": "MIT",
+  "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
+  "type": "module",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "bin": {
+    "tsup-dev": "out/bin.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "check-types": "tsc --noEmit",
+    "dev": "node --watch --watch-preserve-output --experimental-strip-types src/bin.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "^22",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "tsup": "^8.3.6"
+  }
+}

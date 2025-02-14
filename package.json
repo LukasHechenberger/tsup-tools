@@ -3,15 +3,23 @@
   "version": "0.0.0",
   "private": true,
   "description": "Some useful tools to improve developer experience with tsup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHechenberger/tsup-tools.git"
+  },
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "scripts": {
-    "dev": "turbo dev",
+    "check-format": "pnpm -s format --check",
+    "check-types": "pnpm turbo check-types",
+    "dev": "turbo watch build",
     "format": "prettier .",
-    "postinstall": "ignore-sync .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "ignore-sync . && pnpm run --filter @repo/scripts repo:prepare",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:dev": "turbo dev"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "ignore-sync": "^8.0.0",
     "prettier": "^3.5.0",
     "prettier-plugin-packagejson": "^2.5.8",
