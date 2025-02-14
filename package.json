@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "scripts": {
+    "dev": "turbo dev",
     "format": "prettier .",
     "postinstall": "ignore-sync .",
     "test": "echo \"Error: no test specified\" && exit 1"
