@@ -29,8 +29,7 @@
     "build": "tsup",
     "check-pkg": "pnpm pkg-ok",
     "check-types": "tsc --noEmit",
-    "dev": "node --watch --watch-preserve-output --experimental-strip-types src/bin.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --watch --watch-preserve-output --experimental-strip-types src/bin.ts"
   },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
