@@ -1,6 +1,6 @@
 {
   "name": "@lhechenberger/tsup-watch-monorepo",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Watch your workspace dependencies and rebuild them with tsup",
   "keywords": [
     "tsup",
