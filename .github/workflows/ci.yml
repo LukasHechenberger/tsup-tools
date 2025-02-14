@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
@@ -25,3 +28,12 @@ jobs:
             echo "There are uncommitted changes after the build."
             exit 1
           fi
+      - name: changesets
+        # if the event is a push this also implies that the branch is main
+        if: ${{ github.event_name == 'push' }}
+        uses: changesets/action@v1
+        with:
+          commit: 'chore: Update versions'
+          title: 'chore: Update versions'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

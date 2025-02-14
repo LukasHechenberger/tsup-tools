@@ -19,6 +19,7 @@
     "test:dev": "turbo dev"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "ignore-sync": "^8.0.0",
     "prettier": "^3.5.0",
     "prettier-plugin-packagejson": "^2.5.8",
