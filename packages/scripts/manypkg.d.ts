@@ -10,5 +10,7 @@ declare module '@manypkg/tools' {
       url: string;
       directory?: string;
     };
+
+    scripts?: Record<string, string>;
   }
 }
