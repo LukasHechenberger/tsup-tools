@@ -17,10 +17,11 @@
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "type": "module",
-  "main": "out/index.js",
-  "types": "out/index.d.ts",
+  "main": "./out/index.js",
+  "types": "./out/index.d.ts",
   "scripts": {
     "build": "tsup",
+    "check-pkg": "pnpm pkg-ok",
     "check-types": "tsc --noEmit",
     "dev": "tsup-dev",
     "test": "echo \"Error: no test specified\" && exit 1"
