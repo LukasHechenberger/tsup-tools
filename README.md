@@ -31,10 +31,6 @@ As we are using the packages inside this repo to build themselves, `tsup --watch
 
 - `init` script to setup `tsup-dev`
 
-**CI**
-
-- Check types etc. package.json values
-
 **Additional packages**
 
 - `tsup-smart-defaults`: Inherit config from package.json etc:
