@@ -10,6 +10,7 @@
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "scripts": {
+    "check-format": "pnpm -s format --check",
     "dev": "turbo watch build",
     "format": "prettier .",
     "postinstall": "ignore-sync . && pnpm run --filter @repo/scripts repo:prepare",

@@ -5,6 +5,8 @@
       "dependsOn": ["^build"],
       "outputs": ["out/**"]
     },
+    "//#check-format": {},
+    "check-format": {},
     "check-types": {
       "dependsOn": ["^check-types"]
     },
