@@ -50,6 +50,8 @@ for (const pkg of [rootPackage!, ...sortedPackages]) {
       directory: pkg.relativeDir,
     };
 
+    pkg.packageJson.publishConfig = pkg.packageJson.private ? undefined : { access: 'public' };
+
     await writeFile(join(pkg.dir, 'package.json'), `${JSON.stringify(pkg.packageJson, null, 2)}\n`);
   }
 
