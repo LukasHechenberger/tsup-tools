@@ -23,9 +23,6 @@
     "dev": "node --watch --watch-preserve-output --experimental-strip-types src/bin.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "esbuild-register": "^3.6.0"
-  },
   "devDependencies": {
     "@repo/tsconfig": "workspace:*",
     "@types/node": "^22",

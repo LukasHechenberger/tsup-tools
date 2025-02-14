@@ -1,6 +1,10 @@
+<!-- @replace heading -->
+
 # @lhechenberger/tsup-watch-monorepo
 
 > Watch your workspace dependencies and rebuild them with tsup
+
+<!-- /@replace heading -->
 
 - It automatically watches workspace dependencies in a monorepo to trigger a rebuild so all your output files are always up-to-date
 

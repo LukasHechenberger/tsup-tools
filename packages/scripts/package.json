@@ -1,0 +1,22 @@
+{
+  "name": "@repo/scripts",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Some scripts",
+  "keywords": [],
+  "license": "MIT",
+  "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
+  "type": "module",
+  "scripts": {
+    "repo:prepare": "node --experimental-strip-types ./sync-meta.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "^2.2.2",
+    "replace-in-file": "^8.3.0"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "^22"
+  }
+}

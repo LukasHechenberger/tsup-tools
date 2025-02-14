@@ -1,6 +1,10 @@
+<!-- @replace heading -->
+
 # @lhechenberger/tsup-dev
 
 > `tsup --watch`, but uses your tsup.config to determine what files to watch
+
+<!-- /@replace heading -->
 
 This package is meant to improve the development experience of [running tsup in watch mode](https://tsup.egoist.dev/#watch-mode):
 
