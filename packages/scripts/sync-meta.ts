@@ -1,4 +1,4 @@
-import { getPackages } from '@manypkg/get-packages';
+import { getPackages, type Package } from '@manypkg/get-packages';
 import { replaceInFile } from 'replace-in-file';
 import { join } from 'path';
 
@@ -11,7 +11,7 @@ const sortedPackages = packages.sort((a, b) => {
 
   // Otherwise sort by name
   return a.packageJson.name.localeCompare(b.packageJson.name);
-});
+}) as (Package & { packageJson: { description?: string } })[];
 
 class Marker {
   private name: string;
@@ -28,7 +28,8 @@ class Marker {
     return `<!-- @replace ${this.name} -->\n\n${content}\n\n<!-- /@replace ${this.name} -->`;
   }
 
-  async replaceInFile(path: string, content: string) {
+  // NOTE: This does *not* throw if the marker is not found
+  replaceInFile(path: string, content: string) {
     return replaceInFile({
       files: path,
       from: this.regExp,
@@ -37,10 +38,12 @@ class Marker {
   }
 
   static heading = new Marker('heading');
+  static footer = new Marker('footer');
 }
 
-// Adjust headers in package readmes
 for (const pkg of sortedPackages) {
+  const readmePath = join(pkg.dir, 'README.md');
+  // Adjust headers in package readmes
   let heading = `# ${pkg.packageJson.name}`;
 
   if (pkg.packageJson.description) {
@@ -49,5 +52,20 @@ for (const pkg of sortedPackages) {
     console.warn(`Package ${pkg.packageJson.name} is missing a description`);
   }
 
-  await Marker.heading.replaceInFile(join(pkg.dir, 'README.md'), heading);
+  await Marker.heading.replaceInFile(readmePath, heading);
+
+  // TODO: For published packages, also add a footer like "Part of the ... project"
+  // if (!pkg.packageJson.private) {}
 }
+
+// List all packages in root readme
+
+const packageList = new Marker('packages');
+await packageList.replaceInFile(
+  join(rootDir, 'README.md'),
+  sortedPackages
+    .map((pkg) =>
+      `- [\`${pkg.packageJson.name}\`](${pkg.relativeDir}/README.md) - ${pkg.packageJson.description ?? ''} ${pkg.packageJson.private ? '(internal)' : ''}`.trim(),
+    )
+    .join('\n'),
+);

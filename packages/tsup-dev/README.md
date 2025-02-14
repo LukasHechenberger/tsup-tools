@@ -2,7 +2,7 @@
 
 # @lhechenberger/tsup-dev
 
-> `tsup --watch`, but uses your tsup.config to determine what files to watch
+> `tsup --watch`, but uses your tsup.config to determine which files to watch
 
 <!-- /@replace heading -->
 

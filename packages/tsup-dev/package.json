@@ -1,7 +1,7 @@
 {
   "name": "@lhechenberger/tsup-dev",
   "version": "0.0.0",
-  "description": "`tsup --watch`, but uses your tsup.config to determine what files to watch",
+  "description": "`tsup --watch`, but uses your tsup.config to determine which files to watch",
   "keywords": [
     "tsup",
     "watch",

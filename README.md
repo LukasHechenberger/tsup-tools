@@ -2,6 +2,17 @@
 
 > Some useful tools to improve developer experience with tsup
 
+## Packages
+
+<!-- @replace packages -->
+
+- [`@lhechenberger/tsup-dev`](packages/tsup-dev/README.md) - `tsup --watch`, but uses your tsup.config to determine which files to watch
+- [`@lhechenberger/tsup-watch-monorepo`](packages/tsup-watch-monorepo/README.md) - Watch your workspace dependencies and rebuild them with tsup
+- [`@repo/scripts`](packages/scripts/README.md) - Some scripts (internal)
+- [`@repo/tsconfig`](packages/tsconfig/README.md) - Shared Tsconfig (internal)
+
+<!-- /@replace packages -->
+
 ## Maintainers
 
 ### Running repo script
