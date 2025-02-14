@@ -18,7 +18,7 @@ jobs:
           node-version: 22
           cache: 'pnpm'
       - run: pnpm install
-      - run: pnpm turbo run build check-format
+      - run: pnpm turbo run build check-format check-types
       - name: Check for uncommitted changes
         run: |
           if [[ -n $(git status --porcelain) ]]; then
