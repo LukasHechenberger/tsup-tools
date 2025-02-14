@@ -1,0 +1,33 @@
+{
+  "name": "@lhechenberger/tsup-watch-monorepo",
+  "version": "0.0.0",
+  "description": "watch your workspace dependencies and rebuild them with tsup",
+  "keywords": [
+    "tsup",
+    "watch",
+    "dev",
+    "monorepo",
+    "turbobuild"
+  ],
+  "license": "MIT",
+  "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
+  "type": "module",
+  "main": "out/index.js",
+  "types": "out/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "check-types": "tsc --noEmit",
+    "dev": "tsup-dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@manypkg/get-packages": "^2.2.2"
+  },
+  "devDependencies": {
+    "@lhechenberger/tsup-dev": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
+    "@types/node": "^22",
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
+  }
+}

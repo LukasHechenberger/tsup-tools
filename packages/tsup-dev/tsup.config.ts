@@ -5,4 +5,5 @@ export default defineConfig({
   format: 'esm',
   outDir: './out',
   splitting: false, // Inline constants
+  dts: true,
 });
