@@ -50,7 +50,14 @@ for (const pkg of [rootPackage!, ...sortedPackages]) {
       directory: pkg.relativeDir,
     };
 
+    // Update publishConfig
     pkg.packageJson.publishConfig = pkg.packageJson.private ? undefined : { access: 'public' };
+
+    // Add check-pkg scripts
+    if (!pkg.packageJson.private) {
+      pkg.packageJson.scripts ??= {};
+      pkg.packageJson.scripts['check-pkg'] = 'pnpm pkg-ok';
+    }
 
     await writeFile(join(pkg.dir, 'package.json'), `${JSON.stringify(pkg.packageJson, null, 2)}\n`);
   }
