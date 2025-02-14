@@ -22,6 +22,9 @@
   "bin": {
     "tsup-dev": "./out/bin.js"
   },
+  "files": [
+    "out"
+  ],
   "scripts": {
     "build": "tsup",
     "check-pkg": "pnpm pkg-ok",

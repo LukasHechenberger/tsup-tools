@@ -19,6 +19,9 @@
   "type": "module",
   "main": "./out/index.js",
   "types": "./out/index.d.ts",
+  "files": [
+    "out"
+  ],
   "scripts": {
     "build": "tsup",
     "check-pkg": "pnpm pkg-ok",
