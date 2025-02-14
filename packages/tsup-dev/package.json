@@ -9,6 +9,11 @@
     "monorepo",
     "turbobuild"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHechenberger/tsup-tools.git",
+    "directory": "packages/tsup-dev"
+  },
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "type": "module",

@@ -4,10 +4,16 @@
   "private": true,
   "description": "Some scripts",
   "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHechenberger/tsup-tools.git",
+    "directory": "packages/scripts"
+  },
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "type": "module",
   "scripts": {
+    "check-types": "tsc --noEmit",
     "repo:prepare": "node --experimental-strip-types ./sync-meta.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +24,7 @@
   "devDependencies": {
     "@manypkg/tools": "^1.1.2",
     "@repo/tsconfig": "workspace:*",
-    "@types/node": "^22"
+    "@types/node": "^22",
+    "typescript": "^5.7.3"
   }
 }

@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "description": "Some useful tools to improve developer experience with tsup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHechenberger/tsup-tools.git"
+  },
   "license": "MIT",
   "author": "Lukas Hechenberger <npm@ls-age.com> (https://ls-age.com/)",
   "scripts": {
     "dev": "turbo watch build",
     "format": "prettier .",
-    "postinstall": "ignore-sync .",
+    "postinstall": "ignore-sync . && pnpm run --filter @repo/scripts repo:prepare",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:dev": "turbo dev"
   },

@@ -1,6 +1,7 @@
-import { getPackages, type Test } from '@manypkg/get-packages';
+import { getPackages } from '@manypkg/get-packages';
 import { replaceInFile } from 'replace-in-file';
 import { join } from 'path';
+import { writeFile } from 'fs/promises';
 
 const { packages, rootDir, rootPackage } = await getPackages(process.cwd());
 
@@ -42,8 +43,18 @@ class Marker {
 }
 
 for (const pkg of [rootPackage!, ...sortedPackages]) {
-  const readmePath = join(pkg.dir, 'README.md');
+  // Adjust package.json of non-root packages
+  if (pkg !== rootPackage) {
+    pkg.packageJson.repository = {
+      ...rootPackage!.packageJson.repository!,
+      directory: pkg.relativeDir,
+    };
+
+    await writeFile(join(pkg.dir, 'package.json'), `${JSON.stringify(pkg.packageJson, null, 2)}\n`);
+  }
+
   // Adjust headers in package readmes
+  const readmePath = join(pkg.dir, 'README.md');
   let heading = `# ${pkg.packageJson.name}`;
 
   if (pkg.packageJson.description) {
