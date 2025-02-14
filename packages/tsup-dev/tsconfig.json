@@ -1,0 +1,8 @@
+{
+  "extends": ["@repo/tsconfig"],
+  "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true
+  }
+}
